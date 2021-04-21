@@ -15,7 +15,7 @@ use App\Http\Controllers\BookController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Route::get('/book', function () {
@@ -30,8 +30,24 @@ Route::get('/book',[BookAdminController::class,'index']);
 
 Route::get('/books/showall',[BookController::class,'VieBook']);
 
+Route::group(['middleware' => 'auth'],function () {
+    Route::get('/',[BookController::class,'VieBook']);
+});
+
 Route::get('/books/create',[BookController::class,'create_w']);
 
 #Route::delete('/books/delete/{id}',[BookController::class,'Delete']);
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
