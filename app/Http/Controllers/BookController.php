@@ -108,4 +108,22 @@ class BookController extends Controller
             return new BookResource($book);
         }
     }
+
+    public function VieBook(){
+        
+        $book = Book::paginate(2);
+        return view('Book.index',compact('book'));        
+    }
+
+    public function create_w (Request $request){
+        $book = request()->all();        
+
+        Book::insert($book);
+        return response()->json($book);
+    }
+
+    // public function Delete($id){
+    //     Book::destroy($id);
+    //     return redirect('/book');
+    // }
 }

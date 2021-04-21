@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/book', function () {
+//     return view('Book.index');
+// });
+#Route::resource('/book', BookAdminController::class);
+// BookAdminController
+
+#Route::get('/book',[BookAdminController::class]);
+
+Route::get('/book',[BookAdminController::class,'index']);
+
+Route::get('/books/showall',[BookController::class,'VieBook']);
+
+Route::get('/books/create',[BookController::class,'create_w']);
+
+#Route::delete('/books/delete/{id}',[BookController::class,'Delete']);
+
+
